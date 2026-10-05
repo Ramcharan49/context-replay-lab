@@ -1,0 +1,555 @@
+{
+  "adapter_kind": "scripted; no inference or model quality evidence",
+  "all_controls_passed": true,
+  "cases": {
+    "negative_irrelevant": {
+      "action_changed": false,
+      "claim_scope": "Scripted adapter sensitivity only; no model or task-quality measurement.",
+      "decision_id": "synthetic-inventory-before-answer",
+      "evidence_visibility": [
+        {
+          "event_content_bytes": 49,
+          "event_id": "e0000",
+          "logged_before_decision": true,
+          "seq": 0,
+          "visible_original_content_bytes": 49,
+          "visible_replay_content_bytes": 49
+        },
+        {
+          "event_content_bytes": 43,
+          "event_id": "e0001",
+          "logged_before_decision": true,
+          "seq": 1,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        },
+        {
+          "event_content_bytes": 57,
+          "event_id": "e0002",
+          "logged_before_decision": true,
+          "seq": 2,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 57
+        },
+        {
+          "event_content_bytes": 63,
+          "event_id": "e0003",
+          "logged_before_decision": true,
+          "seq": 3,
+          "visible_original_content_bytes": 63,
+          "visible_replay_content_bytes": 63
+        },
+        {
+          "event_content_bytes": 81,
+          "event_id": "e0004",
+          "logged_before_decision": false,
+          "seq": 4,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        }
+      ],
+      "frozen_hashes": {
+        "adapter_sha256": "fb39e82a0b84d617b7a84f53a2749d4aaa841f635daff149991e478166194e69",
+        "environment_sha256": "a1c38db2203a2e809a1d75af1bd320049b3ab5e0a369430f3b82bd1227b9a40d",
+        "prefix_sha256": "1e059e52fbf1e3839c31c968a97d4e54ab56443714eef221f01a204ec1412338",
+        "tools_sha256": "a392335c1dc6fc7650c0797a38e1dd64680ed322eff2ce417b5674f173fb4f8d"
+      },
+      "interventions": [
+        {
+          "added_content_bytes": 57,
+          "effect": "appended",
+          "logged_before_decision": true,
+          "source": {
+            "end": 57,
+            "event_id": "e0002",
+            "start": 0
+          },
+          "visible_in_original": false
+        }
+      ],
+      "original": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 369,
+        "visible_input_sha256": "5835a7d1bc563c44b29d23d9a28ffcf4f653617e7bd48d2e987dddf2ef22cda0",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "originals": {
+        "baseline_file_sha256": "9b86878ae67cb01b462814d50e7c361f135a0ff1ed0aee7dcd3c0f5f96aad63a",
+        "events_file_sha256": "e200017ff703f718129f4547a167e0343254802cfdee982ab764ea65756d2a48"
+      },
+      "replay": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            },
+            {
+              "content": "catalog_note=The demonstration shelf is beside the café.",
+              "role": "tool"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            },
+            {
+              "end": 57,
+              "event_id": "e0002",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 455,
+        "visible_input_sha256": "4926f382099a6566d9078d911abe58a9fb9d9522fee575643c469672b8b7917c",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"},{\"content\":\"catalog_note=The demonstration shelf is beside the café.\",\"role\":\"tool\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "report_schema_version": 1,
+      "snapshot_diff": "--- original\n+++ replay\n@@ -7,6 +7,10 @@\n     {\n       \"content\": \"We checked the catalog. Next, answer the availability question.\",\n       \"role\": \"assistant\"\n+    },\n+    {\n+      \"content\": \"catalog_note=The demonstration shelf is beside the café.\",\n+      \"role\": \"tool\"\n     }\n   ],\n   \"provenance\": [\n@@ -19,6 +23,11 @@\n       \"end\": 63,\n       \"event_id\": \"e0003\",\n       \"start\": 0\n+    },\n+    {\n+      \"end\": 57,\n+      \"event_id\": \"e0002\",\n+      \"start\": 0\n     }\n   ]\n }\n",
+      "units": "UTF-8 bytes, not model tokens",
+      "validation": "passed_before_adapter_calls"
+    },
+    "negative_noop_visible": {
+      "action_changed": false,
+      "claim_scope": "Scripted adapter sensitivity only; no model or task-quality measurement.",
+      "decision_id": "synthetic-inventory-before-answer",
+      "evidence_visibility": [
+        {
+          "event_content_bytes": 49,
+          "event_id": "e0000",
+          "logged_before_decision": true,
+          "seq": 0,
+          "visible_original_content_bytes": 49,
+          "visible_replay_content_bytes": 49
+        },
+        {
+          "event_content_bytes": 43,
+          "event_id": "e0001",
+          "logged_before_decision": true,
+          "seq": 1,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        },
+        {
+          "event_content_bytes": 57,
+          "event_id": "e0002",
+          "logged_before_decision": true,
+          "seq": 2,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        },
+        {
+          "event_content_bytes": 63,
+          "event_id": "e0003",
+          "logged_before_decision": true,
+          "seq": 3,
+          "visible_original_content_bytes": 63,
+          "visible_replay_content_bytes": 63
+        },
+        {
+          "event_content_bytes": 81,
+          "event_id": "e0004",
+          "logged_before_decision": false,
+          "seq": 4,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        }
+      ],
+      "frozen_hashes": {
+        "adapter_sha256": "fb39e82a0b84d617b7a84f53a2749d4aaa841f635daff149991e478166194e69",
+        "environment_sha256": "a1c38db2203a2e809a1d75af1bd320049b3ab5e0a369430f3b82bd1227b9a40d",
+        "prefix_sha256": "1e059e52fbf1e3839c31c968a97d4e54ab56443714eef221f01a204ec1412338",
+        "tools_sha256": "a392335c1dc6fc7650c0797a38e1dd64680ed322eff2ce417b5674f173fb4f8d"
+      },
+      "interventions": [
+        {
+          "added_content_bytes": 0,
+          "effect": "no_op_already_visible",
+          "logged_before_decision": true,
+          "source": {
+            "end": 49,
+            "event_id": "e0000",
+            "start": 0
+          },
+          "visible_in_original": true
+        }
+      ],
+      "original": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 369,
+        "visible_input_sha256": "5835a7d1bc563c44b29d23d9a28ffcf4f653617e7bd48d2e987dddf2ef22cda0",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "originals": {
+        "baseline_file_sha256": "9b86878ae67cb01b462814d50e7c361f135a0ff1ed0aee7dcd3c0f5f96aad63a",
+        "events_file_sha256": "e200017ff703f718129f4547a167e0343254802cfdee982ab764ea65756d2a48"
+      },
+      "replay": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 369,
+        "visible_input_sha256": "5835a7d1bc563c44b29d23d9a28ffcf4f653617e7bd48d2e987dddf2ef22cda0",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "report_schema_version": 1,
+      "snapshot_diff": "",
+      "units": "UTF-8 bytes, not model tokens",
+      "validation": "passed_before_adapter_calls"
+    },
+    "negative_unchanged": {
+      "action_changed": false,
+      "claim_scope": "Scripted adapter sensitivity only; no model or task-quality measurement.",
+      "decision_id": "synthetic-inventory-before-answer",
+      "evidence_visibility": [
+        {
+          "event_content_bytes": 49,
+          "event_id": "e0000",
+          "logged_before_decision": true,
+          "seq": 0,
+          "visible_original_content_bytes": 49,
+          "visible_replay_content_bytes": 49
+        },
+        {
+          "event_content_bytes": 43,
+          "event_id": "e0001",
+          "logged_before_decision": true,
+          "seq": 1,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        },
+        {
+          "event_content_bytes": 57,
+          "event_id": "e0002",
+          "logged_before_decision": true,
+          "seq": 2,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        },
+        {
+          "event_content_bytes": 63,
+          "event_id": "e0003",
+          "logged_before_decision": true,
+          "seq": 3,
+          "visible_original_content_bytes": 63,
+          "visible_replay_content_bytes": 63
+        },
+        {
+          "event_content_bytes": 81,
+          "event_id": "e0004",
+          "logged_before_decision": false,
+          "seq": 4,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        }
+      ],
+      "frozen_hashes": {
+        "adapter_sha256": "fb39e82a0b84d617b7a84f53a2749d4aaa841f635daff149991e478166194e69",
+        "environment_sha256": "a1c38db2203a2e809a1d75af1bd320049b3ab5e0a369430f3b82bd1227b9a40d",
+        "prefix_sha256": "1e059e52fbf1e3839c31c968a97d4e54ab56443714eef221f01a204ec1412338",
+        "tools_sha256": "a392335c1dc6fc7650c0797a38e1dd64680ed322eff2ce417b5674f173fb4f8d"
+      },
+      "interventions": [],
+      "original": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 369,
+        "visible_input_sha256": "5835a7d1bc563c44b29d23d9a28ffcf4f653617e7bd48d2e987dddf2ef22cda0",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "originals": {
+        "baseline_file_sha256": "9b86878ae67cb01b462814d50e7c361f135a0ff1ed0aee7dcd3c0f5f96aad63a",
+        "events_file_sha256": "e200017ff703f718129f4547a167e0343254802cfdee982ab764ea65756d2a48"
+      },
+      "replay": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 369,
+        "visible_input_sha256": "5835a7d1bc563c44b29d23d9a28ffcf4f653617e7bd48d2e987dddf2ef22cda0",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "report_schema_version": 1,
+      "snapshot_diff": "",
+      "units": "UTF-8 bytes, not model tokens",
+      "validation": "passed_before_adapter_calls"
+    },
+    "positive_restore": {
+      "action_changed": true,
+      "claim_scope": "Scripted adapter sensitivity only; no model or task-quality measurement.",
+      "decision_id": "synthetic-inventory-before-answer",
+      "evidence_visibility": [
+        {
+          "event_content_bytes": 49,
+          "event_id": "e0000",
+          "logged_before_decision": true,
+          "seq": 0,
+          "visible_original_content_bytes": 49,
+          "visible_replay_content_bytes": 49
+        },
+        {
+          "event_content_bytes": 43,
+          "event_id": "e0001",
+          "logged_before_decision": true,
+          "seq": 1,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 43
+        },
+        {
+          "event_content_bytes": 57,
+          "event_id": "e0002",
+          "logged_before_decision": true,
+          "seq": 2,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        },
+        {
+          "event_content_bytes": 63,
+          "event_id": "e0003",
+          "logged_before_decision": true,
+          "seq": 3,
+          "visible_original_content_bytes": 63,
+          "visible_replay_content_bytes": 63
+        },
+        {
+          "event_content_bytes": 81,
+          "event_id": "e0004",
+          "logged_before_decision": false,
+          "seq": 4,
+          "visible_original_content_bytes": 0,
+          "visible_replay_content_bytes": 0
+        }
+      ],
+      "frozen_hashes": {
+        "adapter_sha256": "fb39e82a0b84d617b7a84f53a2749d4aaa841f635daff149991e478166194e69",
+        "environment_sha256": "a1c38db2203a2e809a1d75af1bd320049b3ab5e0a369430f3b82bd1227b9a40d",
+        "prefix_sha256": "1e059e52fbf1e3839c31c968a97d4e54ab56443714eef221f01a204ec1412338",
+        "tools_sha256": "a392335c1dc6fc7650c0797a38e1dd64680ed322eff2ce417b5674f173fb4f8d"
+      },
+      "interventions": [
+        {
+          "added_content_bytes": 43,
+          "effect": "appended",
+          "logged_before_decision": true,
+          "source": {
+            "end": 43,
+            "event_id": "e0001",
+            "start": 0
+          },
+          "visible_in_original": false
+        }
+      ],
+      "original": {
+        "action": "request_inventory_check",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 369,
+        "visible_input_sha256": "5835a7d1bc563c44b29d23d9a28ffcf4f653617e7bd48d2e987dddf2ef22cda0",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "originals": {
+        "baseline_file_sha256": "9b86878ae67cb01b462814d50e7c361f135a0ff1ed0aee7dcd3c0f5f96aad63a",
+        "events_file_sha256": "e200017ff703f718129f4547a167e0343254802cfdee982ab764ea65756d2a48"
+      },
+      "replay": {
+        "action": "report_unavailable",
+        "snapshot": {
+          "messages": [
+            {
+              "content": "Check whether synthetic item DEMO-7 is available.",
+              "role": "user"
+            },
+            {
+              "content": "We checked the catalog. Next, answer the availability question.",
+              "role": "assistant"
+            },
+            {
+              "content": "item_id=DEMO-7\ninventory_status=unavailable",
+              "role": "tool"
+            }
+          ],
+          "provenance": [
+            {
+              "end": 49,
+              "event_id": "e0000",
+              "start": 0
+            },
+            {
+              "end": 63,
+              "event_id": "e0003",
+              "start": 0
+            },
+            {
+              "end": 43,
+              "event_id": "e0001",
+              "start": 0
+            }
+          ]
+        },
+        "visible_input_bytes": 442,
+        "visible_input_sha256": "5997a80ea2d08686e4795e4d24dbe1b513517a3243f825aba3d77a8a97b01895",
+        "visible_input_utf8": "{\"messages\":[{\"content\":\"Check whether synthetic item DEMO-7 is available.\",\"role\":\"user\"},{\"content\":\"We checked the catalog. Next, answer the availability question.\",\"role\":\"assistant\"},{\"content\":\"item_id=DEMO-7\\ninventory_status=unavailable\",\"role\":\"tool\"}],\"tools\":[{\"input_schema\":{\"additionalProperties\":false,\"properties\":{\"item_id\":{\"type\":\"string\"}},\"required\":[\"item_id\"],\"type\":\"object\"},\"name\":\"lookup_inventory\",\"version\":\"1\"}]}"
+      },
+      "report_schema_version": 1,
+      "snapshot_diff": "--- original\n+++ replay\n@@ -7,6 +7,10 @@\n     {\n       \"content\": \"We checked the catalog. Next, answer the availability question.\",\n       \"role\": \"assistant\"\n+    },\n+    {\n+      \"content\": \"item_id=DEMO-7\\ninventory_status=unavailable\",\n+      \"role\": \"tool\"\n     }\n   ],\n   \"provenance\": [\n@@ -19,6 +23,11 @@\n       \"end\": 63,\n       \"event_id\": \"e0003\",\n       \"start\": 0\n+    },\n+    {\n+      \"end\": 43,\n+      \"event_id\": \"e0001\",\n+      \"start\": 0\n     }\n   ]\n }\n",
+      "units": "UTF-8 bytes, not model tokens",
+      "validation": "passed_before_adapter_calls"
+    }
+  },
+  "control_checks": {
+    "negative_irrelevant": true,
+    "negative_noop_visible": true,
+    "negative_unchanged": true,
+    "positive_restore": true
+  },
+  "experiment": "synthetic inventory decision-point context replay"
+}
