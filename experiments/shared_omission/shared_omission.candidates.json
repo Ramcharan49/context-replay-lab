@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "candidate_id": "candidate-1",
+      "claims": {
+        "availability": "unavailable"
+      }
+    },
+    {
+      "candidate_id": "candidate-2",
+      "claims": {
+        "availability": "unavailable"
+      }
+    },
+    {
+      "candidate_id": "candidate-3",
+      "claims": {
+        "availability": "unavailable"
+      }
+    }
+  ]
+}

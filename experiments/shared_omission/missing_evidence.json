@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "source_id": "inventory-snapshot",
+      "fields": {
+        "availability": "unavailable"
+      }
+    }
+  ]
+}

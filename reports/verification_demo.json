@@ -1,0 +1,624 @@
+{
+  "all_controls_passed": true,
+  "cases": {
+    "complete": {
+      "candidates": [
+        {
+          "all_requirements_supported": true,
+          "candidate_id": "candidate-1",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability",
+            "restock_date"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": true,
+          "candidate_id": "candidate-2",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability",
+            "restock_date"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": true,
+          "candidate_id": "candidate-3",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability",
+            "restock_date"
+          ],
+          "unresolved": []
+        }
+      ],
+      "checks": [
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Report whether synthetic item DEMO-7 is available.",
+          "evidence": {
+            "field": "availability",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "unavailable"
+          },
+          "requirement_id": "availability"
+        },
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Include the planned restock date for synthetic item DEMO-7.",
+          "evidence": {
+            "field": "restock_date",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "2030-01-15"
+          },
+          "requirement_id": "restock_date"
+        }
+      ],
+      "input_sha256": {
+        "candidates": "420fad4068a4fe938ba7554e846c7ba1cb77e96255ed78ad388c7a655eccc075",
+        "evidence": "42b7f6f3d6ddb8b85cbf59106403f9eba921ff34b8df7fa8522016403397776d",
+        "task": "8e7bc4818b44a3d27aa1fff01abe3c13809ac2465c16e68d8bd3eefac2382712"
+      },
+      "method": "declared requirements and exact scalar equality; no model inference",
+      "observed_claim_agreement": {
+        "all_observed_claims_unanimous": true,
+        "checks_completeness": false,
+        "requirement_ids": [
+          "availability",
+          "restock_date"
+        ]
+      },
+      "report_schema_version": 1,
+      "shared_omission_ids": [],
+      "supported_candidate_ids": [
+        "candidate-1",
+        "candidate-2",
+        "candidate-3"
+      ],
+      "task_id": "synthetic-inventory-with-restock-date"
+    },
+    "disagreement": {
+      "candidates": [
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-1",
+          "contradicted": [
+            "restock_date"
+          ],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-2",
+          "contradicted": [
+            "restock_date"
+          ],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": true,
+          "candidate_id": "candidate-3",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability",
+            "restock_date"
+          ],
+          "unresolved": []
+        }
+      ],
+      "checks": [
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Report whether synthetic item DEMO-7 is available.",
+          "evidence": {
+            "field": "availability",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "unavailable"
+          },
+          "requirement_id": "availability"
+        },
+        {
+          "agreement": "disputed",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "2030-01-20",
+              "verdict": "contradicted"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "2030-01-20",
+              "verdict": "contradicted"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Include the planned restock date for synthetic item DEMO-7.",
+          "evidence": {
+            "field": "restock_date",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "2030-01-15"
+          },
+          "requirement_id": "restock_date"
+        }
+      ],
+      "input_sha256": {
+        "candidates": "6350f353f4c220d9a48f815bec5b70ca48a48a2e85a03188bacbbf9062fd07c4",
+        "evidence": "42b7f6f3d6ddb8b85cbf59106403f9eba921ff34b8df7fa8522016403397776d",
+        "task": "8e7bc4818b44a3d27aa1fff01abe3c13809ac2465c16e68d8bd3eefac2382712"
+      },
+      "method": "declared requirements and exact scalar equality; no model inference",
+      "observed_claim_agreement": {
+        "all_observed_claims_unanimous": false,
+        "checks_completeness": false,
+        "requirement_ids": [
+          "availability",
+          "restock_date"
+        ]
+      },
+      "report_schema_version": 1,
+      "shared_omission_ids": [],
+      "supported_candidate_ids": [
+        "candidate-3"
+      ],
+      "task_id": "synthetic-inventory-with-restock-date"
+    },
+    "missing_evidence": {
+      "candidates": [
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-1",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": [
+            "restock_date"
+          ]
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-2",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": [
+            "restock_date"
+          ]
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-3",
+          "contradicted": [],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": [
+            "restock_date"
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Report whether synthetic item DEMO-7 is available.",
+          "evidence": {
+            "field": "availability",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "unavailable"
+          },
+          "requirement_id": "availability"
+        },
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "unresolved"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "unresolved"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "2030-01-15",
+              "verdict": "unresolved"
+            }
+          ],
+          "description": "Include the planned restock date for synthetic item DEMO-7.",
+          "evidence": {
+            "field": "restock_date",
+            "source_id": "inventory-snapshot",
+            "status": "missing_field"
+          },
+          "requirement_id": "restock_date"
+        }
+      ],
+      "input_sha256": {
+        "candidates": "420fad4068a4fe938ba7554e846c7ba1cb77e96255ed78ad388c7a655eccc075",
+        "evidence": "eefe0a012f0c91ffdb51c5fff61bae469f15fd995f1a81c94006086faee5b15b",
+        "task": "8e7bc4818b44a3d27aa1fff01abe3c13809ac2465c16e68d8bd3eefac2382712"
+      },
+      "method": "declared requirements and exact scalar equality; no model inference",
+      "observed_claim_agreement": {
+        "all_observed_claims_unanimous": true,
+        "checks_completeness": false,
+        "requirement_ids": [
+          "availability",
+          "restock_date"
+        ]
+      },
+      "report_schema_version": 1,
+      "shared_omission_ids": [],
+      "supported_candidate_ids": [],
+      "task_id": "synthetic-inventory-with-restock-date"
+    },
+    "shared_omission": {
+      "candidates": [
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-1",
+          "contradicted": [],
+          "omitted": [
+            "restock_date"
+          ],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-2",
+          "contradicted": [],
+          "omitted": [
+            "restock_date"
+          ],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-3",
+          "contradicted": [],
+          "omitted": [
+            "restock_date"
+          ],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        }
+      ],
+      "checks": [
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Report whether synthetic item DEMO-7 is available.",
+          "evidence": {
+            "field": "availability",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "unavailable"
+          },
+          "requirement_id": "availability"
+        },
+        {
+          "agreement": "shared_omission",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": false,
+              "verdict": "omitted"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": false,
+              "verdict": "omitted"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": false,
+              "verdict": "omitted"
+            }
+          ],
+          "description": "Include the planned restock date for synthetic item DEMO-7.",
+          "evidence": {
+            "field": "restock_date",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "2030-01-15"
+          },
+          "requirement_id": "restock_date"
+        }
+      ],
+      "input_sha256": {
+        "candidates": "d59b7b3145fc7eba078a3e3dbce19b3cf7f6aad0c9cafc1e07765ccb3c04ad54",
+        "evidence": "42b7f6f3d6ddb8b85cbf59106403f9eba921ff34b8df7fa8522016403397776d",
+        "task": "8e7bc4818b44a3d27aa1fff01abe3c13809ac2465c16e68d8bd3eefac2382712"
+      },
+      "method": "declared requirements and exact scalar equality; no model inference",
+      "observed_claim_agreement": {
+        "all_observed_claims_unanimous": true,
+        "checks_completeness": false,
+        "requirement_ids": [
+          "availability"
+        ]
+      },
+      "report_schema_version": 1,
+      "shared_omission_ids": [
+        "restock_date"
+      ],
+      "supported_candidate_ids": [],
+      "task_id": "synthetic-inventory-with-restock-date"
+    },
+    "shared_wrong": {
+      "candidates": [
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-1",
+          "contradicted": [
+            "restock_date"
+          ],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-2",
+          "contradicted": [
+            "restock_date"
+          ],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        },
+        {
+          "all_requirements_supported": false,
+          "candidate_id": "candidate-3",
+          "contradicted": [
+            "restock_date"
+          ],
+          "omitted": [],
+          "supported": [
+            "availability"
+          ],
+          "unresolved": []
+        }
+      ],
+      "checks": [
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "unavailable",
+              "verdict": "supported"
+            }
+          ],
+          "description": "Report whether synthetic item DEMO-7 is available.",
+          "evidence": {
+            "field": "availability",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "unavailable"
+          },
+          "requirement_id": "availability"
+        },
+        {
+          "agreement": "unanimous_value",
+          "candidate_verdicts": [
+            {
+              "candidate_id": "candidate-1",
+              "present": true,
+              "value": "2030-01-20",
+              "verdict": "contradicted"
+            },
+            {
+              "candidate_id": "candidate-2",
+              "present": true,
+              "value": "2030-01-20",
+              "verdict": "contradicted"
+            },
+            {
+              "candidate_id": "candidate-3",
+              "present": true,
+              "value": "2030-01-20",
+              "verdict": "contradicted"
+            }
+          ],
+          "description": "Include the planned restock date for synthetic item DEMO-7.",
+          "evidence": {
+            "field": "restock_date",
+            "source_id": "inventory-snapshot",
+            "status": "available",
+            "value": "2030-01-15"
+          },
+          "requirement_id": "restock_date"
+        }
+      ],
+      "input_sha256": {
+        "candidates": "04f7bf409c80e903b66e0fd6a633030b49089d318304ea4fdf97de06c6ac620f",
+        "evidence": "42b7f6f3d6ddb8b85cbf59106403f9eba921ff34b8df7fa8522016403397776d",
+        "task": "8e7bc4818b44a3d27aa1fff01abe3c13809ac2465c16e68d8bd3eefac2382712"
+      },
+      "method": "declared requirements and exact scalar equality; no model inference",
+      "observed_claim_agreement": {
+        "all_observed_claims_unanimous": true,
+        "checks_completeness": false,
+        "requirement_ids": [
+          "availability",
+          "restock_date"
+        ]
+      },
+      "report_schema_version": 1,
+      "shared_omission_ids": [],
+      "supported_candidate_ids": [],
+      "task_id": "synthetic-inventory-with-restock-date"
+    }
+  },
+  "control_checks": {
+    "complete": true,
+    "disagreement": true,
+    "missing_evidence": true,
+    "missing_evidence_stays_unresolved": true,
+    "shared_omission": true,
+    "shared_wrong": true,
+    "shared_wrong_is_contradicted": true
+  },
+  "experiment": "synthetic shared-omission verification"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "task_id": "synthetic-inventory-with-restock-date",
+  "requirements": [
+    {
+      "id": "availability",
+      "description": "Report whether synthetic item DEMO-7 is available.",
+      "source_id": "inventory-snapshot",
+      "field": "availability"
+    },
+    {
+      "id": "restock_date",
+      "description": "Include the planned restock date for synthetic item DEMO-7.",
+      "source_id": "inventory-snapshot",
+      "field": "restock_date"
+    }
+  ]
+}

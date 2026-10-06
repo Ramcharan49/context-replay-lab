@@ -38,6 +38,26 @@ python3 -m context_replay replay \
   --proposal examples/positive_restore.proposal.json
 ```
 
+## Companion experiment: agreement can hide a shared omission
+
+What if three candidate answers agree because all three forgot the same requested
+detail? The [shared-omission experiment](experiments/shared_omission/README.md)
+compares observed-claim agreement with a requirement-first, evidence-linked audit:
+
+```sh
+python3 -m context_replay verify-demo
+```
+
+It adds five deterministic controls: shared omission, complete answers, a shared
+wrong value, a correct minority, and missing evidence. The verifier checks every
+declared requirement, including ones absent from every candidate. Missing evidence
+stays unresolved. Reports show each claim, source field, and verdict.
+
+This is an original, model-free teaching exercise inspired by VeriHarness, not a
+reproduction or a model-quality evaluation. The [walkthrough](experiments/shared_omission/README.md)
+explains the distinction and the connection to the earlier context-replay lab.
+The checked output is [`reports/verification_demo.json`](reports/verification_demo.json).
+
 ## The experiment
 
 The ledger has five events. The decision occurs after the first four:
