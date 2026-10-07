@@ -6,6 +6,7 @@ signatures or independent verification of the external world.
 """
 
 from copy import deepcopy
+from decimal import Decimal, InvalidOperation
 from difflib import unified_diff
 import hashlib
 import json
@@ -48,9 +49,11 @@ def _unique_object(pairs):
 
 
 def parse(data: bytes):
+    """Decode JSON without changing decimal values during float normalization."""
     require(type(data) is bytes, "input must be immutable bytes")
     try:
         result = json.loads(data.decode("utf-8"), object_pairs_hook=_unique_object,
+                            parse_float=_lossless_float,
                             parse_constant=lambda value: _reject_constant(value))
         canonical(result)  # Reject unpaired surrogates, including escaped ones.
         return result
@@ -62,6 +65,22 @@ def parse(data: bytes):
 
 def _reject_constant(value):
     raise ValidationError(f"non-finite JSON number: {value}")
+
+
+def _lossless_float(token):
+    """Keep floats only when their JSON spelling preserves the decimal value.
+
+    Compare decimal spellings, not the exact binary expansion: ordinary 0.1 is
+    valid, but 0.10000000000000001 must not silently become that same value.
+    """
+    value = float(token)
+    try:
+        original = Decimal(token)
+        require(original.is_finite() and Decimal(str(value)) == original,
+                "JSON number cannot preserve its decimal value as a float")
+    except InvalidOperation as error:
+        raise ValidationError("invalid JSON decimal value") from error
+    return value
 
 
 def keys(value, expected, label):

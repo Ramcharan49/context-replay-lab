@@ -92,6 +92,22 @@ present values. Equality compares canonical JSON bytes, so `false`, `0`, and `0.
 are different even though Python can compare them as equal. This conservative
 exact-equality rule is part of the experiment, not a universal semantic rule.
 
+Decimal and exponent tokens must preserve their decimal value when decoded to a
+float and serialized again. The shared JSON reader rejects underflow such as
+`1e-999` (which Python otherwise turns into `0.0`), rounding such as
+`9007199254740993.0` (which becomes `9007199254740992.0`), and overflow before any
+verdict. Without this gate, distinct source and claim values could falsely appear
+supported or unanimous. Ordinary `0.1`, equivalent spellings such as `0.1000`,
+and exact integer tokens remain valid; integer and float types remain distinct.
+This is a decimal round-trip check, not arbitrary-precision arithmetic or a
+requirement that decimals have exact binary representations. It cannot recover
+precision already lost by a caller before producing the input JSON.
+
+The numeric [regressions](../../tests/test_json_numbers.py) cover both evidence and
+candidate boundaries, CLI rejection without report creation, and replay rejection
+before adapter calls. The learning point is that an exact comparison is only as
+trustworthy as the decoding step that supplies its values.
+
 The descriptive `observed_claim_agreement` baseline makes no correctness or
 completeness claim. It ignores requirements absent from every answer. If no claim
 is observed at all, it reports false rather than vacuous unanimity. The full audit

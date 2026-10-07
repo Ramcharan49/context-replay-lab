@@ -199,6 +199,12 @@ than silently refreshing old fingerprints.
 - **Small, single-writer storage.** The append helper is neither concurrent nor
   crash-atomic. Replay permits valid later appends without altering its prefix;
   the report's whole-ledger hash still changes so the audit records that fact.
+- **Bounded numeric representation.** Decimal/exponent JSON numbers must retain
+  their decimal value through float serialization. The reader rejects underflow,
+  overflow, and rounding that would silently merge distinct values. Integers stay
+  exact within Python's input limits. This is not arbitrary-precision decimal
+  support; precision lost before JSON capture cannot be recovered. See the
+  [numeric verification walkthrough](experiments/shared_omission/README.md#mechanics).
 
 ## Research connection and primary sources
 
