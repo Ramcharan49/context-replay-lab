@@ -17,6 +17,11 @@ data is invented. No implementation from a paper or other repository is copied.
 Python 3.10+; tested on Python 3.12.14. Run from the repository root. No install or
 third-party dependencies are needed.
 
+Git attributes preserve LF line endings on every platform, including Windows
+with `core.autocrlf=true`, because source and capture hashes depend on exact
+file bytes. JSON reports use UTF-8 and LF on stdout as well as with `--out`.
+The checkout regression additionally runs when Git is available.
+
 ```sh
 python3 -m unittest discover -s tests -v
 python3 -m context_replay demo

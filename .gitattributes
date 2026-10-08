@@ -1,0 +1,2 @@
+# Source fingerprints, capture hashes, and checked reports require exact LF bytes.
+* text=auto eol=lf

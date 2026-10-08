@@ -49,7 +49,8 @@ def main(argv=None):
             with args.out.open("x", encoding="utf-8", newline="\n") as handle:
                 handle.write(output)
         else:
-            sys.stdout.write(output)
+            # Reports use the same UTF-8/LF bytes on stdout and disk.
+            sys.stdout.buffer.write(output.encode("utf-8"))
         if args.command == "verify":
             return 0 if report["supported_candidate_ids"] else 1
         return 0 if report.get("all_controls_passed", True) else 1
