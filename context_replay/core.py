@@ -106,7 +106,11 @@ def read_events(data: bytes):
     events = []
     previous_hash = "0" * 64
     seen = set()
-    for sequence, line in enumerate(data.splitlines()):
+    # JSONL records end at LF; CR is valid whitespace within a JSON value.
+    lines = data.split(b"\n")
+    if lines[-1] == b"":
+        lines.pop()  # One optional final terminator is not a blank record.
+    for sequence, line in enumerate(lines):
         require(bool(line.strip()), "blank event line")
         event = parse(line)
         keys(event, {"event_id", "seq", "kind", "role", "text", "previous_hash",

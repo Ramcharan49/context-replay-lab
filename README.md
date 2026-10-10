@@ -107,6 +107,9 @@ better reasoning, reduced hallucination, or improved task completion.
 Every row has a sequence number, stable ID, role, text, previous hash, and content
 hash. `append_event` only appends after checking the current chain and new event.
 Replay reads immutable bytes and has no write path into the original capture.
+Ledger records are separated by LF (CRLF is accepted); bare CR cannot separate
+records. CR whitespace within a JSON row is preserved. Blank records are rejected,
+and one final newline is optional when reading. The append helper requires it.
 
 [`examples/baseline.json`](examples/baseline.json) freezes the decision boundary,
 canonical execution-prefix hash, declared environment, tool definitions, adapter

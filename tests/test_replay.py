@@ -259,6 +259,34 @@ class ReplayTests(unittest.TestCase):
             rows[1][key] = value
             self.reject(events=b"".join(canonical(row) + b"\n" for row in rows))
 
+    def test_carriage_return_whitespace_inside_jsonl_row_is_preserved(self):
+        events = self.events.replace(b',', b',\r', 1)
+        self.assertEqual(read_events(events), self.event_rows)
+        report = replay(events, self.baseline, self.proposal)
+        self.assertEqual(report["replay"]["action"], "report_unavailable")
+        self.assertEqual(report["originals"]["events_file_sha256"], digest(events))
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "events.jsonl"
+            path.write_bytes(events)
+            append_event(path, kind="observation", role="tool", text="Later observation.")
+            self.assertTrue(path.read_bytes().startswith(events))
+            self.assertEqual(len(read_events(path.read_bytes())), len(self.event_rows) + 1)
+
+    def test_bare_carriage_returns_cannot_frame_ledger_records(self):
+        self.reject(events=self.events.replace(b"\n", b"\r"), match="malformed UTF-8 JSON")
+
+    def test_ledger_accepts_lf_crlf_and_optional_final_newline(self):
+        for events in (self.events, self.events.rstrip(b"\n"),
+                       self.events.replace(b"\n", b"\r\n")):
+            with self.subTest(events=events):
+                self.assertEqual(read_events(events), self.event_rows)
+
+    def test_ledger_rejects_blank_records_including_extra_final_newline(self):
+        for events in (b"\n" + self.events, self.events + b"\n",
+                       self.events.replace(b"\n", b"\n \r\n", 1)):
+            with self.subTest(events=events):
+                self.reject(events=events, match="blank event line")
+
     def test_append_preserves_original_prefix_and_replay(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "events.jsonl"
